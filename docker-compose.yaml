@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  # Proxies requests to internal services
+  reverse-proxy:
+    image: nginx:1.17.10
+    container_name: nginx-reverse-proxy
+    depends_on:
+        - ordina-solid-server
+        
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/sites-available/css.conf
+    ports:
+      - 443:443
+
+  ordina-solid-server:
+    image: solidproject/community-server:latest
+    container_name: ordina-solid-server
+    build:
+      context: ./ordina-solid-server
+    ports:
+      - 3000:3000
+    restart: on-failure
+
