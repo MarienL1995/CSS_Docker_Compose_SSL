@@ -19,6 +19,12 @@ services:
     container_name: ordina-solid-server
     build:
       context: ./ordina-solid-server
+      args: 
+        - -b
+        - https://www.ordinasolid.cloud
+        - -t
+        - -l
+        - info   
     ports:
       - 3000:3000
     restart: on-failure
