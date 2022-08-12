@@ -13,6 +13,7 @@ services:
       - ./reverse_proxy/nginx.conf:/etc/nginx/sites-available/css.conf
     ports:
       - 443:443
+      - 80:80
 
   ordina-solid-server:
     image: solidproject/community-server:latest
@@ -24,7 +25,7 @@ services:
         - https://www.ordinasolid.cloud
         - -t
         - -l
-        - info   
+        - debug   
     ports:
       - 3000:3000
     restart: on-failure
