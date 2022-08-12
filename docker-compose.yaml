@@ -19,7 +19,7 @@ services:
     image: solidproject/community-server:latest
     container_name: ordina-solid-server
     build:
-      context: ./ordina-solid-server
+      context: .
       args: 
         - -b
         - https://www.ordinasolid.cloud
